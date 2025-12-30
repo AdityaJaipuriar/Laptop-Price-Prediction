@@ -14,99 +14,17 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
-
-        body {
-            background-color: var(--bg-dark);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--text-main);
-            min-height: 100vh;
-            padding: 40px 0;
-        }
-
-        .predictor-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            padding: 40px;
-        }
-
-        .header-title {
-            font-weight: 700;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: var(--text-main);
-            text-align: center;
-        }
-
-        .section-tag {
-            font-size: 0.7rem;
-            color: var(--accent-blue);
-            margin-bottom: 8px;
-            display: block;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-control, .form-select {
-            background-color: #0f172a;
-            border: 1px solid #334155;
-            color: white;
-            border-radius: 8px;
-            padding: 10px 12px;
-            font-size: 0.9rem;
-        }
-
-        .form-control:focus, .form-select:focus {
-            background-color: #0f172a;
-            color: white;
-            border-color: var(--accent-blue);
-            box-shadow: none;
-        }
-
-        .btn-calculate {
-            background: var(--accent-blue);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 14px;
-            font-weight: 700;
-            width: 100%;
-            margin-top: 25px;
-            transition: 0.2s;
-        }
-
-        .btn-calculate:hover {
-            background: #2563eb;
-        }
-
-        .result-container {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .result-label {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .footer-text {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            margin-top: 40px;
-            text-align: center;
-            border-top: 1px solid #334155;
-            padding-top: 20px;
-        }
+        body { background-color: var(--bg-dark); font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); min-height: 100vh; padding: 40px 0; }
+        .predictor-card { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); padding: 40px; }
+        .header-title { font-weight: 700; font-size: 1.8rem; margin-bottom: 30px; color: var(--text-main); text-align: center; }
+        .section-tag { font-size: 0.7rem; color: var(--accent-blue); margin-bottom: 8px; display: block; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .form-control, .form-select { background-color: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px; padding: 10px 12px; font-size: 0.9rem; }
+        .form-control:focus, .form-select:focus { background-color: #0f172a; color: white; border-color: var(--accent-blue); box-shadow: none; }
+        .btn-calculate { background: var(--accent-blue); color: white; border: none; border-radius: 8px; padding: 14px; font-weight: 700; width: 100%; margin-top: 25px; transition: 0.2s; }
+        .btn-calculate:hover { background: #2563eb; }
+        .result-container { margin-top: 30px; padding: 20px; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px; text-align: center; }
+        .result-label { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; display: block; }
+        .footer-text { color: var(--text-muted); font-size: 0.75rem; margin-top: 40px; text-align: center; border-top: 1px solid #334155; padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -122,150 +40,112 @@
                         <div class="col-md-6">
                             <span class="section-tag">Manufacturer</span>
                             <select class="form-select" name="company" required>
-                                <option value="Dell">Dell</option>
-                                <option value="Lenovo">Lenovo</option>
-                                <option value="HP">HP</option>
-                                <option value="Asus">Asus</option>
-                                <option value="Acer">Acer</option>
-                                <option value="MSI">MSI</option>
-                                <option value="Toshiba">Toshiba</option>
-                                <option value="Apple">Apple</option>
-                                <option value="Samsung">Samsung</option>
-                                <option value="Razer">Razer</option>
-                                <option value="Mediacom">Mediacom</option>
-                                <option value="Microsoft">Microsoft</option>
-                                <option value="Vero">Vero</option>
-                                <option value="Xiaomi">Xiaomi</option>
-                                <option value="Google">Google</option>
-                                <option value="Fujitsu">Fujitsu</option>
-                                <option value="Chuwi">Chuwi</option>
-                                <option value="LG">LG</option>
-                                <option value="Huawei">Huawei</option>
+                                {% for brand in ['Dell', 'Lenovo', 'HP', 'Asus', 'Acer', 'MSI', 'Toshiba', 'Apple', 'Samsung', 'Razer', 'Mediacom', 'Microsoft', 'Vero', 'Xiaomi', 'Google', 'Fujitsu', 'Chuwi', 'LG', 'Huawei'] %}
+                                <option value="{{brand}}" {% if inputs and inputs.company == brand %}selected{% endif %}>{{brand}}</option>
+                                {% endfor %}
                             </select>
                         </div>
 
                         <div class="col-md-6">
                             <span class="section-tag">Laptop Category</span>
                             <select class="form-select" name="type_name" required>
-                                <option value="Notebook">Notebook</option>
-                                <option value="Gaming">Gaming</option>
-                                <option value="Ultrabook">Ultrabook</option>
-                                <option value="2 in 1 Convertible">2 in 1 Convertible</option>
-                                <option value="Workstation">Workstation</option>
-                                <option value="Netbook">Netbook</option>
+                                {% for cat in ['Notebook', 'Gaming', 'Ultrabook', '2 in 1 Convertible', 'Workstation', 'Netbook'] %}
+                                <option value="{{cat}}" {% if inputs and inputs.type_name == cat %}selected{% endif %}>{{cat}}</option>
+                                {% endfor %}
                             </select>
                         </div>
 
                         <div class="col-md-4">
                             <span class="section-tag">RAM (GB)</span>
                             <select class="form-select" name="ram">
-                                <option value="2">2 GB</option>
-                                <option value="4">4 GB</option>
-                                <option value="6">6 GB</option>
-                                <option value="8" selected>8 GB</option>
-                                <option value="12">12 GB</option>
-                                <option value="16">16 GB</option>
-                                <option value="24">24 GB</option>
-                                <option value="32">32 GB</option>
-                                <option value="64">64 GB</option>
+                                {% for r in [2, 4, 6, 8, 12, 16, 24, 32, 64] %}
+                                <option value="{{r}}" {% if inputs and inputs.ram|int == r %}selected{% elif not inputs and r == 8 %}selected{% endif %}>{{r}} GB</option>
+                                {% endfor %}
                             </select>
                         </div>
+
                         <div class="col-md-4">
                             <span class="section-tag">CPU Speed (GHz)</span>
-                            <input type="number" step="0.1" class="form-control" name="cpu_speed" value="2.5">
+                            <input type="number" step="0.1" class="form-control" name="cpu_speed" value="{{ inputs.cpu_speed if inputs else '2.5' }}">
                         </div>
+
                         <div class="col-md-4">
                             <span class="section-tag">Weight (kg)</span>
-                            <input type="number" step="0.01" class="form-control" name="weight" value="2.0">
+                            <input type="number" step="0.01" class="form-control" name="weight" value="{{ inputs.weight if inputs else '2.0' }}">
                         </div>
 
                         <div class="col-md-6">
                             <span class="section-tag">Processor Brand</span>
                             <select class="form-select" name="cpu_brand">
-                                <option value="Intel Core i5">Intel Core i5</option>
-                                <option value="Intel Core i7">Intel Core i7</option>
-                                <option value="Intel Core i3">Intel Core i3</option>
-                                <option value="Other Intel processor">Other Intel</option>
-                                <option value="AMD processor">AMD Processor</option>
+                                {% for cpu in ['Intel Core i5', 'Intel Core i7', 'Intel Core i3', 'Other Intel processor', 'AMD processor'] %}
+                                <option value="{{cpu}}" {% if inputs and inputs.cpu_brand == cpu %}selected{% endif %}>{{cpu}}</option>
+                                {% endfor %}
                             </select>
                         </div>
+
                         <div class="col-md-6">
                             <span class="section-tag">Graphics Brand</span>
                             <select class="form-select" name="gpu_brand">
-                                <option value="Nvidia">Nvidia</option>
-                                <option value="Intel">Intel</option>
-                                <option value="AMD">AMD</option>
+                                {% for gpu in ['Nvidia', 'Intel', 'AMD'] %}
+                                <option value="{{gpu}}" {% if inputs and inputs.gpu_brand == gpu %}selected{% endif %}>{{gpu}}</option>
+                                {% endfor %}
                             </select>
                         </div>
 
                         <div class="col-md-6">
                             <span class="section-tag">SSD Capacity (GB)</span>
                             <select class="form-select" name="ssd">
-                                <option value="0">None</option>
-                                <option value="8">8 GB</option>
-                                <option value="16">16 GB</option>
-                                <option value="32">32 GB</option>
-                                <option value="64">64 GB</option>
-                                <option value="128">128 GB</option>
-                                <option value="180">180 GB</option>
-                                <option value="240">240 GB</option>
-                                <option value="256" selected>256 GB</option>
-                                <option value="512">512 GB</option>
-                                <option value="1000">1 TB</option>
+                                {% for s in [0, 8, 16, 32, 64, 128, 180, 240, 256, 512, 1000] %}
+                                <option value="{{s}}" {% if inputs and inputs.ssd|int == s %}selected{% elif not inputs and s == 256 %}selected{% endif %}>{{ 'None' if s == 0 else s|string + ' GB' if s < 1000 else '1 TB' }}</option>
+                                {% endfor %}
                             </select>
                         </div>
+
                         <div class="col-md-6">
                             <span class="section-tag">HDD Capacity (GB)</span>
                             <select class="form-select" name="hdd">
-                                <option value="0" selected>None</option>
-                                <option value="32">32 GB</option>
-                                <option value="128">128 GB</option>
-                                <option value="500">500 GB</option>
-                                <option value="1000">1 TB</option>
-                                <option value="2000">2 TB</option>
+                                {% for h in [0, 32, 128, 500, 1000, 2000] %}
+                                <option value="{{h}}" {% if inputs and inputs.hdd|int == h %}selected{% elif not inputs and h == 0 %}selected{% endif %}>{{ 'None' if h == 0 else h|string + ' GB' if h < 1000 else (h/1000)|int|string + ' TB' }}</option>
+                                {% endfor %}
                             </select>
                         </div>
 
                         <div class="col-md-3">
                             <span class="section-tag">Size (Inches)</span>
-                            <input type="number" step="0.1" class="form-control" name="inches" value="15.6">
+                            <input type="number" step="0.1" class="form-control" name="inches" value="{{ inputs.inches if inputs else '15.6' }}">
                         </div>
+
                         <div class="col-md-5">
                             <span class="section-tag">Screen Resolution</span>
                             <select class="form-select" name="resolution">
-                                <option value="1920x1080">1920x1080</option>
-                                <option value="1366x768">1366x768</option>
-                                <option value="1600x900">1600x900</option>
-                                <option value="3840x2160">3840x2160</option>
-                                <option value="3200x1800">3200x1800</option>
-                                <option value="2880x1800">2880x1800</option>
-                                <option value="2560x1600">2560x1600</option>
-                                <option value="2560x1440">2560x1440</option>
-                                <option value="2304x1440">2304x1440</option>
+                                {% for res in ['1920x1080', '1366x768', '1600x900', '3840x2160', '3200x1800', '2880x1800', '2560x1600', '2560x1440', '2304x1440'] %}
+                                <option value="{{res}}" {% if inputs and inputs.resolution == res %}selected{% endif %}>{{res}}</option>
+                                {% endfor %}
                             </select>
                         </div>
+
                         <div class="col-md-2">
                             <span class="section-tag">IPS</span>
                             <select class="form-select" name="ips">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
+                                <option value="0" {% if inputs and inputs.ips == '0' %}selected{% endif %}>No</option>
+                                <option value="1" {% if inputs and inputs.ips == '1' %}selected{% endif %}>Yes</option>
                             </select>
                         </div>
+
                         <div class="col-md-2">
                             <span class="section-tag">Touch</span>
                             <select class="form-select" name="touchscreen">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
+                                <option value="0" {% if inputs and inputs.touchscreen == '0' %}selected{% endif %}>No</option>
+                                <option value="1" {% if inputs and inputs.touchscreen == '1' %}selected{% endif %}>Yes</option>
                             </select>
                         </div>
 
                         <div class="col-md-12">
                             <span class="section-tag">Operating System</span>
                             <select class="form-select" name="os_group">
-                                <option value="Windows">Windows</option>
-                                <option value="Mac">MacOS</option>
-                                <option value="Linux">Linux</option>
-                                <option value="Other">Other</option>
+                                {% for os in ['Windows', 'Mac', 'Linux', 'Other'] %}
+                                <option value="{{os}}" {% if inputs and inputs.os_group == os %}selected{% endif %}>{{ 'MacOS' if os == 'Mac' else os }}</option>
+                                {% endfor %}
                             </select>
                         </div>
 
@@ -289,6 +169,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

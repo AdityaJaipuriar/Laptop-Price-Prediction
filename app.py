@@ -15,7 +15,7 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # 1. Get data from form
+    #data from form
     company = request.form.get('company')
     type_name = request.form.get('type_name')
     ram = int(request.form.get('ram'))
@@ -31,23 +31,26 @@ def predict():
     gpu_brand = request.form.get('gpu_brand')
     os_group = request.form.get('os_group')
 
-    # 2. Calculate PPI (since model expects PPI, not Resolution)
+    #Calculate PPI
     X_res = int(resolution.split('x')[0])
     Y_res = int(resolution.split('x')[1])
     ppi = ((X_res**2) + (Y_res**2))**0.5 / inches
 
-    # 3. Create DataFrame for prediction
+    #Create DataFrame for prediction
     query = pd.DataFrame([[company, type_name, ram, weight, touchscreen, ips, ppi, cpu_speed, cpu_brand, hdd, ssd, gpu_brand, os_group]],
                          columns=['Company', 'TypeName', 'Ram', 'Weight', 'Touchscreen', 'IPS', 'PPI', 'CpuSpeed', 'Cpu brand', 'HDD', 'SSD', 'GpuBrand', 'OpSysGroup'])
 
-    # 4. Transform and Predict
+    #Transform and Predict
     query_transformed = preprocessor.transform(query)
     prediction = model.predict(query_transformed)
     
-    # 5. Inverse Log transformation (expm1)
+    #Inverse Log transformation
     result = int(np.expm1(prediction)[0])
 
-    return render_template('index.html', prediction_text=f'Estimated Price: ₹ {result:,}')
+    #PASSING request.form back as 'inputs' to keep the values in the UI
+    return render_template('index.html', 
+                           prediction_text=f'Estimated Price: ₹ {result:,}',
+                           inputs=request.form)
 
 if __name__ == "__main__":
     app.run(debug=True)
